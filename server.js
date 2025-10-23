@@ -10,7 +10,7 @@ const app = express();
 
 
 app.use(cors({
-    origin: "*",
+    origin: "https://pinheirotv.onrender.com",
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ["Content-Type"]
 }));
