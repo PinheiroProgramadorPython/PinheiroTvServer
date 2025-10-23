@@ -7,8 +7,8 @@ let canais = [];
 
 let download = async () => {
     try {
-        let qtCanais = canalSchema.countDocuments();
-        if (qtCanais > 0) { return };
+        let qtCanais = await canalSchema.countDocuments();
+        if (qtCanais > 0) { return; }
         let req = await fetch(linkPlaylist);
         let resp = await req.text();
         lista = resp.split("\n");
