@@ -21,6 +21,6 @@ app.use(express.json());
 
 atualizarCanais();
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
-app.listen(3000, () => { console.log(`Api Rodando com Sucesso! Na porta: ${port}`) });
+app.listen(port, () => { console.log(`Api Rodando com Sucesso! Na porta: ${port}`) });
