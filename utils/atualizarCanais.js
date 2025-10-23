@@ -25,7 +25,7 @@ let download = async () => {
         }
     });
 
-    await canalSchema.deleteMany({});
+    // await canalSchema.deleteMany({});
     await canalSchema.insertMany(canais);
 
     console.log(`✅ ${canais.length} canais atualizados!`);
