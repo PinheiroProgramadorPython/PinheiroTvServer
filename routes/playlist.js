@@ -14,8 +14,7 @@ router.get("/canais", async (req, resp) => {
             if (!first) { resp.write(",") }
             first = false;
             canal = JSON.stringify(canal);
-            console.log(canal)
-            resp.write(canal)
+            resp.write(canal);
         }
 
         resp.write("]");
