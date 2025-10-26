@@ -1,5 +1,20 @@
 import linkPlaylist from "../config/config.js";
 import canalSchema from "../models/canal.js";
+// import { Storage } from '@google-cloud/storage';
+// import path from 'path';
+// import { fileURLToPath } from 'url';
+
+
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+
+// const storage = new Storage({
+//     projectId: 'linen-fuze-476114-a5',
+//     keyFilename: path.join(__dirname, 'service-account.json'),
+// });
+// const bucketName = "linen-fuze-476114-a5_cloudbuild";
+
+
 
 let lista = [];
 
@@ -32,6 +47,18 @@ let download = async () => {
         await canalSchema.insertMany(canais);
 
         console.log(`✅ ${canais.length} canais atualizados!`);
+
+        // const fileName = 'canais.json';
+        // const file = storage.bucket(bucketName).file(fileName);
+
+        // await file.save(JSON.stringify(canais), {
+        //     contentType: 'application/json',
+        //     resumable: false,
+        // });
+
+        // console.log(`✅ Arquivo ${fileName} salvo no bucket ${bucketName}!`);
+        // const publicUrl = `https://storage.googleapis.com/${bucketName}/${fileName}`;
+        // console.log(`📥 Download disponível em: ${publicUrl}`);
 
         return canais;
 

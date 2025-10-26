@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from "express";
 import cors from "cors";
 import routerPlaylist from "./routes/playlist.js";
@@ -21,6 +22,6 @@ app.use(express.json());
 
 atualizarCanais();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => { console.log(`Api Rodando com Sucesso! Na porta: ${port}`) });
