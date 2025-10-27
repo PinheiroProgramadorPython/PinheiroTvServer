@@ -9,12 +9,16 @@ router.get("/canais", async (req, resp) => {
         resp.writeHead(200, { "Content-Type": "application/json" });
         let canais = canalSchema.find().batchSize(1000).cursor();
         let first = true;
+        resp.write("[");
 
         for await (let canal of canais) {
-            canal = JSON.stringify(canal + "\n");
+            if (!first) { resp.write(",") }
+            first = false;
+            canal = JSON.stringify(`${canal}`);
             resp.write(canal);
         }
 
+        resp.write("]");
         resp.end();
 
     } catch (error) {
