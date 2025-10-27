@@ -1,5 +1,6 @@
 import linkPlaylist from "../config/config.js";
 import canalSchema from "../models/canal.js";
+import fs from "fs/promises";
 // import { Storage } from '@google-cloud/storage';
 // import path from 'path';
 // import { fileURLToPath } from 'url';
@@ -22,8 +23,8 @@ let canais = [];
 
 let download = async () => {
     try {
-        let qtCanais = await canalSchema.countDocuments();
-        if (qtCanais > 0) { return; }
+        // let qtCanais = await canalSchema.countDocuments();
+        // if (qtCanais > 0) { return; }
         let req = await fetch(linkPlaylist);
         let resp = await req.text();
         lista = resp.split("\n");
@@ -59,7 +60,7 @@ let download = async () => {
         // console.log(`✅ Arquivo ${fileName} salvo no bucket ${bucketName}!`);
         // const publicUrl = `https://storage.googleapis.com/${bucketName}/${fileName}`;
         // console.log(`📥 Download disponível em: ${publicUrl}`);
-
+        await fs.writeFile("canais.json", JSON.stringify(canais));
         return canais;
 
     } catch (error) {
