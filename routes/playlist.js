@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/canais", async (req, resp) => {
     try {
         resp.writeHead(200, { "Content-Type": "application/json" });
-        let canais = canalSchema.find().cursor();
+        let canais = canalSchema.find().batchSize(1000).cursor();
         let first = true;
         resp.write("[");
         for await (let canal of canais) {
